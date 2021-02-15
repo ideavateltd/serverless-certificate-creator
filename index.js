@@ -482,6 +482,9 @@ class CreateCertificatePlugin {
 
   getCertificateProperty(src) {
     this.initializeVariables();
+    if (!this.enabled) {
+      return;
+    }
     let [s, domainName, property] = src.split(':');
     return this.listCertificates()
       .then(({ CertificateSummaryList }) => {
